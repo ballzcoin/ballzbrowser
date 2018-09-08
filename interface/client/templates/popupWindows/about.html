@@ -1,0 +1,16 @@
+<template name="popupWindows_about">
+    <div class="row popup-windows about">
+        <div class="col col-4 ">
+            <img class="left-overlay {{mode}}" src="{{appIconPath}}" style="position: relative;top: -20px;left: 1%;width: 170%;">
+        </div>
+        <div class="col col-8 ">
+            <h1>{{appName}}</h1>
+            <p>
+                Version {{mist.version}}<br>
+                License {{mist.license}}<br>
+                GitHub <a href="https://github.com/ballzcoin/ballzbrowser" target="_blank">github.com/ballzcoin/ballzbrowser</a>
+            </p>
+            <small>Copyright 2017 Ballzcoin</small>
+        </div>
+    </div>
+</template>
