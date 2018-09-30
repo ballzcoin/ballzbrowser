@@ -133,6 +133,15 @@ Template['popupWindows_sendTransactionConfirmation'].onCreated(function () {
                 });
             }
 
+
+	    // Ballzcoin modification - set gasPrice to arbitrary minimum value, to ensure that transaction is broadcast and processed.
+	    // This corrects an issue whereby the eth.getGasPrice function sets the gasPrice to 0 if the network gas price is very low (~2m).
+	    // This results in the transaction sitting in the pending pool and never being executed, i.e. coins can't be sent. 
+	    if (data.gasPrice == '0x0') {
+		data.gasPrice = '4000000000'; //0.004 Ballzcoin per million gas = default transaction fee of 0.000084 Ballzcoin (21,000 gas).
+                Session.set('data', data);
+	    }
+
             // check if to is a contract
             if (data.to) {
                 web3.eth.getCode(data.to, function (e, res) {

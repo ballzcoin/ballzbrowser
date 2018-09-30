@@ -291,6 +291,7 @@ onReady = () => {
     }
 
     const kickStart = () => {
+	
         // client binary stuff
         ClientBinaryManager.on('status', (status, data) => {
             Windows.broadcast('uiAction_clientBinaryStatus', status, data);
